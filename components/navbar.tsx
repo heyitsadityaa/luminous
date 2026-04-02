@@ -1,11 +1,50 @@
-import React from 'react'
+"use client";
+
+import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { ModeToggle } from "./mode-toggle";
 
 const Navbar = () => {
-    return (
-        <div>
-            Navbar
-        </div>
-    )
-}
+    const { theme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
 
-export default Navbar
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return null;
+    }
+
+    return (
+        <nav className="h-4">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-background">
+                {/* Left side - Logo */}
+                <div className="flex-1">
+                    {theme === "dark" ? (
+                        <Image
+                            src="/logo-dark.svg"
+                            alt="Logo Dark"
+                            width={150}
+                            height={150}
+                        />
+                    ) : (
+                        <Image
+                            src="/logo-light.svg"
+                            alt="Logo Light"
+                            width={150}
+                            height={150}
+                        />
+                    )}
+                </div>
+
+                {/* Right side - Theme Toggle */}
+                <ModeToggle />
+            </div>
+        </nav>
+    );
+};
+
+export default Navbar;
