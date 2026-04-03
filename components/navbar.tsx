@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
 
 const Navbar = () => {
-    const { theme, setTheme } = useTheme();
+    const { theme } = useTheme();
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -29,6 +29,7 @@ const Navbar = () => {
                             alt="Logo Dark"
                             width={150}
                             height={150}
+                            loading="eager"
                         />
                     ) : (
                         <Image
@@ -36,6 +37,7 @@ const Navbar = () => {
                             alt="Logo Light"
                             width={150}
                             height={150}
+                            loading="eager"
                         />
                     )}
                 </div>
