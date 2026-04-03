@@ -1,11 +1,10 @@
 "use client"
 
-import * as React from "react"
 import { useTheme } from "next-themes"
+import * as React from "react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "./ui/button"
-export const DARK_MODE_FORWARD_TYPE = "dark-mode-forward"
 
 export function ModeToggle({
     variant = "ghost",
@@ -25,7 +24,7 @@ export function ModeToggle({
         <Button
             variant={variant}
             size="icon"
-            className={cn("group/toggle extend-touch-target size-8", className)}
+            className={cn("group/toggle extend-touch-target size-10", className)}
             onClick={toggleTheme}
         >
             <svg

@@ -1,8 +1,7 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { ModeToggle } from "./mode-toggle";
 
@@ -43,7 +42,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Right side - Theme Toggle */}
-                <ModeToggle />
+                <ModeToggle variant="outline" className="rounded-lg" />
             </div>
         </nav>
     );
