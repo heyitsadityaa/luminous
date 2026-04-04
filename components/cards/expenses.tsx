@@ -33,7 +33,7 @@ export default function Expenses({ className }: { className?: string }) {
             <CardContent className="flex-1 pb-0">
                 <ChartContainer
                     config={EXPENSE_CONFIG}
-                    className="mx-auto aspect-square max-h-[240px]"
+                    className="mx-auto aspect-square max-h-60"
                 >
                     <PieChart>
                         <ChartTooltip
