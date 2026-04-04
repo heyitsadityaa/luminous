@@ -84,7 +84,7 @@ const DashboardNavbar = () => {
                 </div>
 
                 {/* Search in the center - centered on md and lg */}
-                <div className="flex-1 px-2 flex justify-center">
+                <div className="flex-1 px-2 flex justify-center ">
                     <div className="relative w-full max-w-sm">
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                         <Input
