@@ -55,7 +55,7 @@ export default function Home() {
           >
             <div className="flex flex-col h-full justify-between">
               <div>
-                <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary">
+                <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary">
                   <Lock className="w-6 h-6 text-black" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Sign in as Admin</h3>

@@ -24,7 +24,7 @@ export function ModeToggle({
         <Button
             variant={variant}
             size="icon"
-            className={cn("group/toggle extend-touch-target size-10", className)}
+            className={cn("group/toggle extend-touch-target size-10 cursor-pointer", className)}
             onClick={toggleTheme}
         >
             <svg
