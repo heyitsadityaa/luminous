@@ -11,7 +11,6 @@ import {
     DropdownMenuItem,
     DropdownMenuLabel,
     DropdownMenuSeparator,
-    DropdownMenuShortcut,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CircleUser, LogOut, Search } from "lucide-react";
@@ -28,9 +27,27 @@ const DashboardNavbar = () => {
     const isMobile = useIsMobile()
     const isAdmin = useIsAdmin()
 
-    const handleSignOut = () => {
+    const handleSignOut = async () => {
         localStorage.removeItem("ledger-role");
-        document.cookie = "ledger-role=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+
+        const cookieStore = (
+            window as unknown as {
+                cookieStore?: {
+                    delete: (options: {
+                        name: string;
+                        path: string;
+                    }) => Promise<void>;
+                };
+            }
+        ).cookieStore;
+
+        if (cookieStore) {
+            await cookieStore.delete({
+                name: "ledger-role",
+                path: "/",
+            });
+        }
+
         router.push("/");
     };
 
