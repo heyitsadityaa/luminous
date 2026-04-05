@@ -2,10 +2,10 @@
 
 import React, { useEffect } from 'react'
 
-import { useStore } from '@/store/useStore'
+import { useRole } from '@/store/useRole'
 
 const DashboardProvider = ({ children }: { children: React.ReactNode }) => {
-    const setRole = useStore((state) => state.setRole)
+    const setRole = useRole((state) => state.setRole)
 
     useEffect(() => {
         const role = localStorage.getItem("ledger-role") as "admin" | "viewer" | null;

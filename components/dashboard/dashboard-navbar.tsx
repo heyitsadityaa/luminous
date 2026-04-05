@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { CircleUser, LogOut, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useStore } from "@/store/useStore";
+import { useRole } from "@/store/useRole";
 import { useIsMobile } from "@/hooks/use-mobile";
 import useIsAdmin from "@/hooks/useIsAdmin";
 import { Button } from "../ui/button";
@@ -23,7 +23,7 @@ import { Button } from "../ui/button";
 const DashboardNavbar = () => {
     const { theme } = useTheme();
     const router = useRouter();
-    const role = useStore((state) => state.role);
+    const role = useRole((state) => state.role);
     const isMobile = useIsMobile()
     const isAdmin = useIsAdmin()
 
