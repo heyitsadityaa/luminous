@@ -1,7 +1,7 @@
-import { useStore } from "@/store/useRole";
+import { useRole } from "@/store/useRole";
 
 export default function useIsAdmin() {
-    const role = useStore((state) => state.role)
+    const role = useRole((state) => state.role)
 
     return role === "admin"
 }
