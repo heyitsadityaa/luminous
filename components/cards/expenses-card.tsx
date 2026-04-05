@@ -19,13 +19,13 @@ import {
 import { EXPENSE_NAME, EXPENSE_DESCRIPTION, EXPENSE_CONFIG, EXPENSE_DATA } from "@/constant/expense"
 import { cn } from "@/lib/utils"
 
-export default function Expenses({ className }: { className?: string }) {
+export default function ExpensesCard({ className }: { className?: string }) {
     const totalExpense = React.useMemo(() => {
         return EXPENSE_DATA.reduce((acc, curr) => acc + curr.amount, 0)
     }, [])
 
     return (
-        <Card className={cn("flex flex-col max-w-sm", className)}>
+        <Card className={cn("flex flex-col max-w-xs", className)}>
             <CardHeader className="items-center">
                 <CardTitle className="font-semibold text-lg">{EXPENSE_NAME}</CardTitle>
                 <CardDescription>{EXPENSE_DESCRIPTION}</CardDescription>

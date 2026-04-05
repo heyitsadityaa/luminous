@@ -100,8 +100,17 @@ const DashboardNavbar = () => {
                     <ModeToggle variant="outline" className="rounded-lg" />
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
-                            <Button variant={isAdmin ? "default" : "outline"} className="border rounded-full size-10">
+                            <Button
+                                variant={isAdmin ? "default" : "outline"}
+                                className="border rounded-full size-10 relative"
+                            >
                                 <CircleUser className="w-5 h-5 cursor-pointer hover:text-primary transition" />
+                                <span className={`absolute -top-1.5 -right-1.5 text-[9px] font-bold px-1 py-0 rounded-full leading-4 ${isAdmin
+                                    ? "bg-primary text-primary-foreground"
+                                    : "bg-muted text-muted-foreground border border-border"
+                                    }`}>
+                                    {isAdmin ? "Admin" : "Viewer"}
+                                </span>
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-56">
@@ -112,7 +121,9 @@ const DashboardNavbar = () => {
                                 <DropdownMenuItem className="py-3">
                                     <div className="flex flex-col flex-1">
                                         <span className="font-semibold">Aditya Prakash</span>
-                                        <span className="text-xs text-muted-foreground">{role === "admin" ? "Admin" : "Viewer"}</span>
+                                        <span className="text-xs text-muted-foreground">
+                                            {role === "admin" ? "Admin" : "Viewer"}
+                                        </span>
                                     </div>
                                 </DropdownMenuItem>
                                 <DropdownMenuItem className="py-3">

@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { TRANSACTIONS } from '@/constant/transaction'
 import { cn } from '@/lib/utils'
 
-const Transactions = ({ className }: { className?: string }) => {
+const TransactionsCard = ({ className }: { className?: string }) => {
     const firstEightTransactions = TRANSACTIONS.slice(0, 8)
 
     const getCategoryColor = (category: string) => {
@@ -72,4 +72,4 @@ const Transactions = ({ className }: { className?: string }) => {
     )
 }
 
-export default Transactions
+export default TransactionsCard
