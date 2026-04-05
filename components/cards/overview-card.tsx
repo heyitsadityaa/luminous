@@ -5,8 +5,6 @@ import { Separator } from "@/components/ui/separator"
 import { Progress } from "@/components/ui/progress"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import {
-    TrendingUp,
-    TrendingDown,
     Wifi,
     ShieldCheck,
     Bell,
@@ -83,12 +81,6 @@ export function OverviewCard({ className }: { className?: string }) {
                         ₹
                     </span>
                 </div>
-                <div className="flex items-center gap-1.5 mt-1">
-                    <span className="text-xs opacity-60">vs last month</span>
-                    <Badge className="text-xs px-1.5 py-0 dark:bg-black/20 bg-white/20 dark:text-black text-background border-0">
-                        ↑ 8.2%
-                    </Badge>
-                </div>
             </CardHeader>
 
             <CardContent className="space-y-5">
@@ -100,26 +92,17 @@ export function OverviewCard({ className }: { className?: string }) {
                         <span className="font-mono font-semibold text-sm">
                             {formatINR(OVERVIEW_DATA.totalIncome)}
                         </span>
-                        <span className="text-xs opacity-50">This month</span>
                     </div>
                     <div className="flex flex-col gap-0.5">
                         <span className="text-xs opacity-60">Expenses</span>
                         <span className="font-mono font-semibold text-sm">
                             {formatINR(OVERVIEW_DATA.totalExpense)}
                         </span>
-                        <span className="text-xs opacity-50">This month</span>
                     </div>
                     <div className="flex flex-col gap-0.5">
                         <span className="text-xs opacity-60">Saved</span>
                         <span className="font-mono font-semibold text-sm">
                             {formatINR(OVERVIEW_DATA.totalIncome - OVERVIEW_DATA.totalExpense)}
-                        </span>
-                        <span className="text-xs opacity-50">
-                            {Math.round(
-                                ((OVERVIEW_DATA.totalIncome - OVERVIEW_DATA.totalExpense) /
-                                    OVERVIEW_DATA.totalIncome) *
-                                100
-                            )}% rate
                         </span>
                     </div>
                 </div>
@@ -150,7 +133,7 @@ export function OverviewCard({ className }: { className?: string }) {
                     <div className="relative z-10 flex flex-col gap-4">
                         <div className="flex items-center justify-between">
                             <span className="text-xs font-semibold uppercase tracking-widest opacity-70">
-                                Ledger Bank
+                                State Bank of India
                             </span>
                             <Wifi className="w-4 h-4 rotate-90 opacity-60" />
                         </div>
@@ -228,13 +211,6 @@ export function OverviewCard({ className }: { className?: string }) {
                                 <span className="font-mono text-sm font-bold">
                                     {formatINR(inv.amount)}
                                 </span>
-                                <div className={`flex items-center gap-0.5 text-xs font-medium ${inv.positive ? "opacity-80" : "opacity-60"}`}>
-                                    {inv.positive
-                                        ? <TrendingUp className="w-3 h-3" />
-                                        : <TrendingDown className="w-3 h-3" />
-                                    }
-                                    {inv.returns}
-                                </div>
                             </div>
                         </div>
                     ))}
@@ -246,14 +222,14 @@ export function OverviewCard({ className }: { className?: string }) {
                 <div className="space-y-2">
                     <div className="flex items-center gap-1.5">
                         <Bell className="w-3.5 h-3.5 opacity-60" />
-                        <span className="text-xs font-semibold uppercase tracking-widest opacity-60">
+                        <span className="text-xs font-bold uppercase tracking-widest opacity-60">
                             Alerts
                         </span>
                     </div>
                     {OVERVIEW_DATA.recentAlerts.map((alert) => (
                         <div
                             key={alert.label}
-                            className="flex items-center gap-2.5 rounded-xl dark:bg-black/10 bg-white/10 border dark:border-black/10 border-white/10 px-3 py-2.5"
+                            className="flex items-center gap-2.5 font-semibold rounded-xl dark:bg-black/10 bg-white/10 border dark:border-black/10 border-white/10 px-3 py-2.5"
                         >
                             <div className={`w-1.5 h-1.5 rounded-full shrink-0 ${alert.type === "warning"
                                 ? "bg-orange-400"

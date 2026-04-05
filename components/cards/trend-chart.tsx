@@ -96,12 +96,12 @@ export function TrendChart({ className }: { className?: string }) {
                 </div>
                 <Select value={timeRange} onValueChange={setTimeRange}>
                     <SelectTrigger
-                        className="hidden w-[160px] rounded-lg sm:ml-auto sm:flex"
+                        className="hidden w-40 rounded-lg sm:ml-auto sm:flex"
                         aria-label="Select time range"
                     >
                         <SelectValue placeholder="Last 6 months" />
                     </SelectTrigger>
-                    <SelectContent className="rounded-xl">
+                    <SelectContent className="rounded-xl p-2">
                         <SelectItem value="3m" className="rounded-lg">
                             Last 3 months
                         </SelectItem>
