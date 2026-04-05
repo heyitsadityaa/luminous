@@ -1,9 +1,9 @@
+import DashboardProvider from "@/components/dashboard/dashboard-provider";
+
 import { Urbanist } from "next/font/google";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import DashboardProvider from "@/components/dashboard-provider";
 
 import type { Metadata } from "next";
-import DashboardNavbar from "@/components/dashboard-navbar";
+import DashboardNavbar from "@/components/dashboard/dashboard-navbar";
 
 const fontSerif = Urbanist({
     subsets: ["latin"],

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { ModeToggle } from "./mode-toggle";
+import { ModeToggle } from "../mode-toggle";
 import { Input } from "@/components/ui/input";
 import {
     DropdownMenu,
@@ -17,8 +17,8 @@ import { CircleUser, LogOut, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/store/useStore";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Button } from "./ui/button";
 import useIsAdmin from "@/hooks/useIsAdmin";
+import { Button } from "../ui/button";
 
 const DashboardNavbar = () => {
     const { theme } = useTheme();
@@ -52,7 +52,7 @@ const DashboardNavbar = () => {
     };
 
     return (
-        <nav className="h-16">
+        <nav className="h-16 top-0 z-50 sticky">
             <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-background gap-4">
                 {/* Left side - Logo */}
                 <div className="flex-1">
