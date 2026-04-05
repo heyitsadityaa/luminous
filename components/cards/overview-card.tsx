@@ -70,7 +70,7 @@ const creditUsed = Math.round(
 
 export function OverviewCard({ className }: { className?: string }) {
     return (
-        <Card className={cn("max-w-xl dark:bg-primary dark:text-black bg-foreground text-background", className)}>
+        <Card className={cn("dark:bg-primary/80 dark:text-black bg-foreground text-background", className)}>
             <CardHeader className="pb-2">
                 <span className="text-xs font-medium uppercase tracking-widest opacity-60">
                     Total Balance

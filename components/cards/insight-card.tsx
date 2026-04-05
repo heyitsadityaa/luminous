@@ -58,7 +58,7 @@ const InsightCard = ({
     className?: string
 }) => {
     return (
-        <Card className={cn("aspect-square max-w-3xs relative overflow-hidden", className)}>
+        <Card className={cn("aspect-square w-full h-full relative overflow-hidden", className)}>
 
             {patterns[variant]}
 

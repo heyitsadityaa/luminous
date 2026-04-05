@@ -5,11 +5,11 @@ export const EXPENSE_NAME = 'Expense Distribution'
 export const EXPENSE_DESCRIPTION = "Where your money went this month"
 
 export const EXPENSE_DATA = [
-    { category: "food ", amount: 12400, fill: "var(--color-food)" },
-    { category: "bills ", amount: 8900, fill: "var(--color-bills)" },
-    { category: "transport ", amount: 4200, fill: "var(--color-transport)" },
-    { category: "shopping ", amount: 6750, fill: "var(--color-shopping)" },
-    { category: "healthcare ", amount: 2100, fill: "var(--color-healthcare)" },
+    { category: "food", amount: 12400, fill: "var(--color-food)" },
+    { category: "bills", amount: 8900, fill: "var(--color-bills)" },
+    { category: "transport", amount: 4200, fill: "var(--color-transport)" },
+    { category: "shopping", amount: 6750, fill: "var(--color-shopping)" },
+    { category: "healthcare", amount: 2100, fill: "var(--color-healthcare)" },
 ]
 
 export const EXPENSE_CONFIG = {

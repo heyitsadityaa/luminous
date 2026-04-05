@@ -3,7 +3,7 @@ import { TRANSACTIONS } from '@/constant/transaction'
 import { cn } from '@/lib/utils'
 
 const TransactionsCard = ({ className }: { className?: string }) => {
-    const firstEightTransactions = TRANSACTIONS.slice(0, 8)
+    const firstEightTransactions = TRANSACTIONS.slice(0, 7)
 
     const getCategoryColor = (category: string) => {
         const colors: Record<string, string> = {
@@ -31,7 +31,7 @@ const TransactionsCard = ({ className }: { className?: string }) => {
     }
 
     return (
-        <Card className={cn('max-w-md', className)}>
+        <Card className={cn('w-full h-full', className)}>
             <CardHeader>
                 <CardTitle className='font-semibold text-lg'>Recent Transactions</CardTitle>
             </CardHeader>

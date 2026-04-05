@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/card"
 import {
     ChartContainer,
+    ChartLegend,
+    ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -25,15 +27,15 @@ export default function ExpensesCard({ className }: { className?: string }) {
     }, [])
 
     return (
-        <Card className={cn("flex flex-col max-w-xs", className)}>
+        <Card className={cn("flex flex-col ", className)}>
             <CardHeader className="items-center">
                 <CardTitle className="font-semibold text-lg">{EXPENSE_NAME}</CardTitle>
                 <CardDescription>{EXPENSE_DESCRIPTION}</CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 pb-0">
+            <CardContent className="flex-1 items-center justify-center pb-0">
                 <ChartContainer
                     config={EXPENSE_CONFIG}
-                    className="mx-auto aspect-square max-h-60"
+                    className="mx-auto aspect-square max-h-64 md:max-h-72 lg:max-h-80"
                 >
                     <PieChart>
                         <ChartTooltip
@@ -50,23 +52,26 @@ export default function ExpensesCard({ className }: { className?: string }) {
                             <Label
                                 content={({ viewBox }) => {
                                     if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                                        const cx = viewBox.cx
+                                        const cy = viewBox.cy
+
                                         return (
                                             <text
-                                                x={viewBox.cx}
-                                                y={viewBox.cy}
+                                                x={cx}
+                                                y={cy}
                                                 textAnchor="middle"
                                                 dominantBaseline="middle"
                                             >
                                                 <tspan
-                                                    x={viewBox.cx}
-                                                    y={viewBox.cy}
+                                                    x={cx}
+                                                    y={cy - 20}
                                                     className="fill-foreground text-3xl font-bold"
                                                 >
                                                     ₹{totalExpense.toLocaleString()}
                                                 </tspan>
                                                 <tspan
-                                                    x={viewBox.cx}
-                                                    y={(viewBox.cy || 0) + 24}
+                                                    x={cx}
+                                                    y={cy - 2}
                                                     className="fill-muted-foreground"
                                                 >
                                                     Expenses
@@ -77,6 +82,10 @@ export default function ExpensesCard({ className }: { className?: string }) {
                                 }}
                             />
                         </Pie>
+                        <ChartLegend
+                            content={<ChartLegendContent nameKey="category" />}
+                            className="flex-wrap gap-2 justify-center"
+                        />
                     </PieChart>
                 </ChartContainer>
             </CardContent>
