@@ -8,9 +8,11 @@ import { OverviewCard } from "@/components/cards/overview-card"
 import TransactionsCard from "@/components/cards/transactions-card"
 import { TrendChart } from "@/components/cards/trend-chart"
 import GreetingsCard from "@/components/cards/greetings-card"
+import DashboardSkeleton from "@/components/dashboard/dashboard-skeleton"
 
 const Dashboard = () => {
     const [expandBottom, setExpandBottom] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     const hoverEndTimerRef = useRef<number | null>(null)
 
     const handleHoverStart = () => {
@@ -33,12 +35,21 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
+        const loadingTimer = window.setTimeout(() => {
+            setIsLoading(false)
+        }, 2000)
+
         return () => {
+            window.clearTimeout(loadingTimer)
             if (hoverEndTimerRef.current !== null) {
                 window.clearTimeout(hoverEndTimerRef.current)
             }
         }
     }, [])
+
+    if (isLoading) {
+        return <DashboardSkeleton />
+    }
 
     return (
         <div className="px-4 py-6 md:px-6 md:py-8">
@@ -82,7 +93,8 @@ const Dashboard = () => {
                         transition={{ type: "tween", duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                         className={expandBottom ? "md:row-span-3" : "md:row-span-2 md:col-span-4"}
                         onHoverStart={handleHoverStart}
-                        onHoverEnd={handleHoverEnd}>
+                        onHoverEnd={handleHoverEnd}
+                    >
                         <InsightCard
                             className=""
                             variant="dots"
@@ -91,6 +103,7 @@ const Dashboard = () => {
                         />
                     </motion.div>
                 </div>
+
                 <TrendChart className="md:col-span-8 md:row-span-4 w-full h-full" />
             </div>
         </div>
@@ -98,4 +111,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
