@@ -34,7 +34,7 @@ const GreetingsCard = ({ className }: { className?: string }) => {
       <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-primary opacity-40 rounded-bl-sm" />
 
       <CardHeader className="pb-2 relative z-10">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-center justify-between gap-4">
           <div className="space-y-0.5">
             <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
               {greeting},

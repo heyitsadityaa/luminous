@@ -171,7 +171,7 @@ export function OverviewCard({ className }: { className?: string }) {
   return (
     <Card
       className={cn(
-        "dark:bg-primary/80 dark:text-black bg-foreground text-background",
+        "dark:bg-primary/85 dark:text-black bg-[#1b1b1b] text-background",
         className,
       )}
     >
@@ -505,13 +505,12 @@ export function OverviewCard({ className }: { className?: string }) {
               className="flex items-center gap-2.5 font-semibold rounded-xl dark:bg-black/10 bg-white/10 border dark:border-black/10 border-white/10 px-3 py-2.5"
             >
               <div
-                className={`w-1.5 h-1.5 rounded-full shrink-0 ${
-                  alert.type === "warning"
-                    ? "bg-orange-400"
-                    : alert.type === "success"
-                      ? "bg-green-400"
-                      : "bg-blue-400"
-                }`}
+                className={`w-1.5 h-1.5 rounded-full shrink-0 ${alert.type === "warning"
+                  ? "bg-orange-400"
+                  : alert.type === "success"
+                    ? "bg-green-400"
+                    : "bg-blue-400"
+                  }`}
               />
               <span className="text-xs">{alert.label}</span>
             </div>

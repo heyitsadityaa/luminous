@@ -69,7 +69,7 @@ const InsightCard = ({
   return (
     <Card
       className={cn(
-        "aspect-square w-full h-full relative overflow-hidden",
+        "aspect-square w-full h-full relative overflow-hidden select-none",
         className,
       )}
       onPointerEnter={() => setIsHovered(true)}

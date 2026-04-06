@@ -95,7 +95,7 @@ const DashboardNavbar = () => {
 
           <Button
             variant="outline"
-            className="rounded-lg"
+            className="rounded-lg hidden md:inline-flex items-center gap-2 px-3"
             onClick={handleSignOut}
           >
             <LogOut className="w-4 h-4 mr-2" />
