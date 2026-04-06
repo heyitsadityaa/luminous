@@ -110,8 +110,8 @@ const DashboardNavbar = () => {
               >
                 <CircleUser className="w-5 h-5 cursor-pointer hover:text-primary transition" />
                 <span
-                  className={`absolute -top-1.5 -right-1.5 text-[9px] font-bold px-1 py-0 rounded-full leading-4 ${isAdmin
-                    ? "bg-primary text-primary-foreground"
+                  className={`absolute -top-2 -right-2 text-[9px] font-bold px-1 py-0 rounded-full leading-4 ${isAdmin
+                    ? "bg-primary border border-black text-primary-foreground"
                     : "bg-muted text-muted-foreground border border-border"
                     }`}
                 >
