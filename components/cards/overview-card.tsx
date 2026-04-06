@@ -81,9 +81,6 @@ const INITIAL_OVERVIEW_DATA: OverviewData = {
   ],
 };
 
-const fileName = "dashboard_overview";
-const exportType = exportFromJSON.types.csv;
-
 const formatINR = (amount: number) =>
   new Intl.NumberFormat("en-IN", {
     style: "currency",
@@ -123,6 +120,9 @@ export function OverviewCard({ className }: { className?: string }) {
         recentAlerts: overviewData.recentAlerts.map((a) => a.label).join(" | "),
       },
     ];
+
+    const fileName = "dashboard_overview";
+    const exportType = exportFromJSON.types.csv;
 
     exportFromJSON({ data: exportData, fileName, exportType });
   };
@@ -506,10 +506,10 @@ export function OverviewCard({ className }: { className?: string }) {
             >
               <div
                 className={`w-1.5 h-1.5 rounded-full shrink-0 ${alert.type === "warning"
-                    ? "bg-orange-400"
-                    : alert.type === "success"
-                      ? "bg-green-400"
-                      : "bg-blue-400"
+                  ? "bg-orange-400"
+                  : alert.type === "success"
+                    ? "bg-green-400"
+                    : "bg-blue-400"
                   }`}
               />
               <span className="text-xs">{alert.label}</span>

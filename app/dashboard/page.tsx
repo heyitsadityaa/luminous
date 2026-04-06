@@ -10,10 +10,17 @@ import { TrendChart } from "@/components/cards/trend-chart";
 import GreetingsCard from "@/components/cards/greetings-card";
 import DashboardSkeleton from "@/components/dashboard/dashboard-skeleton";
 import { InvestmentsCard } from "@/components/cards/investments-card";
+import { AlertCircle } from "lucide-react";
 
 const Dashboard = () => {
   const [isHovered, setIsHovered] = useState(false);
+
+  // Handling undefined case.
   const [isLoading, setIsLoading] = useState(true);
+
+  // Handling null case.
+  const [error, setError] = useState<string | null>(null);
+
   const hoverEndTimerRef = useRef<number | null>(null);
 
   const handleHoverStart = () => {
@@ -36,20 +43,36 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const loadingTimer = window.setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
+    try {
+      const loadingTimer = window.setTimeout(() => {
+        setIsLoading(false);
+      }, 800);
 
-    return () => {
-      window.clearTimeout(loadingTimer);
-      if (hoverEndTimerRef.current !== null) {
-        window.clearTimeout(hoverEndTimerRef.current);
-      }
-    };
+      return () => {
+        window.clearTimeout(loadingTimer);
+        if (hoverEndTimerRef.current !== null) {
+          window.clearTimeout(hoverEndTimerRef.current);
+        }
+      };
+    } catch (err) {
+      setError("Something went wrong. Please try again later.");
+      setIsLoading(false);
+    }
   }, []);
 
   if (isLoading) {
     return <DashboardSkeleton />;
+  }
+
+  if (error) {
+    return (
+      <div className="px-4 py-6 md:px-6 md:py-8 flex items-center justify-center h-screen">
+        <div className="text-center">
+          <AlertCircle className="w-8 h-8 text-destructive mb-4 mx-auto" />
+          <p className="text-destructive text-xl font-semibold">{error}</p>
+        </div>
+      </div>
+    );
   }
 
   return (

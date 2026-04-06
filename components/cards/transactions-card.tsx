@@ -4,11 +4,24 @@ import { Input } from "@/components/ui/input";
 import { TRANSACTIONS } from "@/constant/transaction";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { useTransactions } from "@/store/useTransactions";
 
 const TransactionsCard = ({ className }: { className?: string }) => {
-  const [inputValue, setInputValue] = useState<string | null>("");
+  const [searchQuery, setSearchQuery] = useState<string | null>("");
 
-  const firstEightTransactions = TRANSACTIONS.slice(0, 6);
+  const { transactions } = useTransactions()
+
+  const searchTransactions = () => {
+    const trimmedSearchQuery = searchQuery?.trim()
+
+    return transactions.filter((val) =>
+      val.name.toLowerCase().includes(trimmedSearchQuery?.toLowerCase() || "")
+    )
+  }
+
+  const displayTransactions = searchQuery && searchQuery.trim()
+    ? searchTransactions()
+    : transactions.slice(0, 6);
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
@@ -48,7 +61,9 @@ const TransactionsCard = ({ className }: { className?: string }) => {
 
             <Input
               type="text"
-              placeholder="Search Transactions..."
+              value={searchQuery || ""}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search Transactions by Name"
               className="h-9 rounded-lg pl-9 w-full"
             />
           </div>
@@ -57,23 +72,20 @@ const TransactionsCard = ({ className }: { className?: string }) => {
 
       <CardContent>
         <div className="space-y-4">
-          {firstEightTransactions.map((transaction) => (
+          {displayTransactions.map((transaction) => (
             <div
               key={transaction.id}
               className="flex items-center justify-between pb-4 last:border-b-0 last:pb-0"
             >
               <div className="flex-1">
                 <p className="font-medium text-sm">{transaction.name}</p>
-                {/* <p className="text-xs text-muted-foreground">
-                                    {transaction.description}
-                                </p> */}
                 <p className="text-xs text-muted-foreground mt-1">
                   {formatDate(transaction.date)}
                 </p>
               </div>
               <div className="flex items-center gap-3">
                 <span
-                  className={`px-2 py-1 rounded text-xs font-medium ${getCategoryColor(
+                  className={`px-2 py-1 hidden lg:block rounded text-xs font-medium ${getCategoryColor(
                     transaction.category,
                   )}`}
                 >
