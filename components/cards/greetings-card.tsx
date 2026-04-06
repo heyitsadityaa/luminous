@@ -37,9 +37,9 @@ const GreetingsCard = ({ className }: { className?: string }) => {
 
                     <div className="space-y-0.5">
                         <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
-                            {greeting} 👋
+                            {greeting},
                         </span>
-                        <h2 className="text-2xl tracking-tight font-bold leading-none">
+                        <h2 className="text-2xl tracking-wide font-bold leading-none">
                             Welcome, Aditya
                         </h2>
                     </div>
