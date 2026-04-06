@@ -1,9 +1,14 @@
+import { Search } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { TRANSACTIONS } from '@/constant/transaction'
 import { cn } from '@/lib/utils'
+import { useState } from 'react'
 
 const TransactionsCard = ({ className }: { className?: string }) => {
-    const firstEightTransactions = TRANSACTIONS.slice(0, 7)
+    const [inputValue, setInputValue] = useState<string | null>("")
+
+    const firstEightTransactions = TRANSACTIONS.slice(0, 6)
 
     const getCategoryColor = (category: string) => {
         const colors: Record<string, string> = {
@@ -33,8 +38,21 @@ const TransactionsCard = ({ className }: { className?: string }) => {
     return (
         <Card className={cn('w-full h-full', className)}>
             <CardHeader>
-                <CardTitle className='font-semibold text-lg'>Recent Transactions</CardTitle>
+                <CardTitle className='font-semibold text-lg mb-2'>Recent Transactions</CardTitle>
+
+                <div className="flex-1 px-2 flex justify-center">
+                    <div className="relative w-full">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+
+                        <Input
+                            type="text"
+                            placeholder="Search Transactions..."
+                            className="h-9 rounded-lg pl-9 w-full"
+                        />
+                    </div>
+                </div>
             </CardHeader>
+
             <CardContent>
                 <div className="space-y-4">
                     {firstEightTransactions.map((transaction) => (

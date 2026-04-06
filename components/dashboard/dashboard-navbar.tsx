@@ -83,21 +83,20 @@ const DashboardNavbar = () => {
                     )}
                 </div>
 
-                {/* Search in the center - centered on md and lg */}
-                <div className="flex-1 px-2 flex justify-center ">
-                    <div className="relative w-full max-w-sm">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input
-                            type="search"
-                            placeholder="Search transactions..."
-                            className="h-9 rounded-lg pl-9 w-full"
-                        />
-                    </div>
-                </div>
 
                 {/* Right side - Theme Toggle and Account */}
-                <div className="flex items-center justify-end gap-3">
+                <div className="flex items-center justify-end gap-5">
                     <ModeToggle variant="outline" className="rounded-lg" />
+
+                    <Button
+                        variant="outline"
+                        className="rounded-lg"
+                        onClick={handleSignOut}
+                    >
+                        <LogOut className="w-4 h-4 mr-2" />
+                        Sign Out
+                    </Button>
+
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button

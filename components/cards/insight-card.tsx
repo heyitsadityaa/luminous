@@ -1,6 +1,9 @@
-import React from 'react'
-import { Card, CardContent, CardHeader } from '../ui/card'
-import { cn } from '@/lib/utils'
+"use client"
+
+import React, { useState } from "react"
+import { Card, CardContent, CardHeader } from "../ui/card"
+import { cn } from "@/lib/utils"
+import { AnimatePresence, motion } from "motion/react"
 
 type InsightVariant = "rings" | "dots" | "diagonal" | "brackets"
 
@@ -14,7 +17,8 @@ const patterns: Record<InsightVariant, React.ReactNode> = {
     ),
     dots: (
         <>
-            <div className="absolute inset-0 opacity-[0.07]"
+            <div
+                className="absolute inset-0 opacity-[0.07]"
                 style={{
                     backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
                     backgroundSize: "14px 14px",
@@ -27,9 +31,11 @@ const patterns: Record<InsightVariant, React.ReactNode> = {
     diagonal: (
         <>
             <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-primary opacity-10" />
-            <div className="absolute top-0 right-0 w-16 h-16 opacity-[0.06]"
+            <div
+                className="absolute top-0 right-0 w-16 h-16 opacity-[0.06]"
                 style={{
-                    backgroundImage: "repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
+                    backgroundImage:
+                        "repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
                     backgroundSize: "8px 8px",
                 }}
             />
@@ -57,9 +63,14 @@ const InsightCard = ({
     variant?: InsightVariant
     className?: string
 }) => {
-    return (
-        <Card className={cn("aspect-square w-full h-full relative overflow-hidden", className)}>
+    const [isHovered, setIsHovered] = useState(false)
 
+    return (
+        <Card
+            className={cn("aspect-square w-full h-full relative overflow-hidden", className)}
+            onPointerEnter={() => setIsHovered(true)}
+            onPointerLeave={() => setIsHovered(false)}
+        >
             {patterns[variant]}
 
             <CardHeader className="pb-0">
@@ -69,16 +80,34 @@ const InsightCard = ({
             </CardHeader>
 
             <CardContent className="flex flex-col justify-end h-[calc(100%-60px)]">
-                <div className="space-y-1.5">
-                    <p className="text-2xl font-bold leading-tight tracking-tight">
-                        {cardHeader}
-                    </p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                        {cardDescription}
-                    </p>
+                <div className="relative min-h-14">
+                    <AnimatePresence mode="wait" initial={false}>
+                        {!isHovered ? (
+                            <motion.p
+                                key="header"
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.25, ease: "easeOut" }}
+                                exit={{ opacity: 0, y: -8 }}
+                                className="text-2xl font-bold leading-tight tracking-tight"
+                            >
+                                {cardHeader}
+                            </motion.p>
+                        ) : (
+                            <motion.p
+                                key="description"
+                                initial={{ opacity: 0, y: 8 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -8 }}
+                                transition={{ duration: 0.25, ease: "easeOut" }}
+                                className="text-md text-muted-foreground leading-relaxed"
+                            >
+                                {cardDescription}
+                            </motion.p>
+                        )}
+                    </AnimatePresence>
                 </div>
             </CardContent>
-
         </Card>
     )
 }
