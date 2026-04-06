@@ -10,8 +10,13 @@ import {
     Bell,
     BarChart2,
     Landmark,
+    Download,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Button } from "../ui/button"
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip"
+import exportFromJSON from "export-from-json"
+import { OVERVIEW_DATA_MOCK } from "@/constant/export-file-data"
 
 const OVERVIEW_DATA = {
     totalBalance: 284500,
@@ -46,6 +51,16 @@ const OVERVIEW_DATA = {
     ],
 }
 
+const fileName = 'dashboard_overview';
+const exportType = exportFromJSON.types.csv;
+
+
+// OVERVIEW_DATA_MOCK comes from "@/constant/export-file-data"
+// OVERVIEW_DATA is not wrapped in an array, as the library needs that data shape.
+const exportFile = () => {
+    exportFromJSON({ data: OVERVIEW_DATA_MOCK, fileName, exportType })
+}
+
 const formatINR = (amount: number) =>
     new Intl.NumberFormat("en-IN", {
         style: "currency",
@@ -69,18 +84,31 @@ const creditUsed = Math.round(
 export function OverviewCard({ className }: { className?: string }) {
     return (
         <Card className={cn("dark:bg-primary/80 dark:text-black bg-foreground text-background", className)}>
-            <CardHeader className="pb-2">
-                <span className="text-xs font-medium uppercase tracking-widest opacity-60">
-                    Total Balance
-                </span>
-                <div className="flex items-end gap-1">
-                    <span className="font-mono text-4xl font-bold tracking-tight">
-                        {formatINR(OVERVIEW_DATA.totalBalance).replace("₹", "")}
+            <CardHeader className="pb-2 flex flex-row items-start justify-between">
+                <div>
+                    <span className="text-xs font-medium uppercase tracking-widest opacity-60">
+                        Total Balance
                     </span>
-                    <span className="font-mono text-lg font-semibold mb-0.5 opacity-70">
-                        ₹
-                    </span>
+                    <div className="flex items-end gap-1">
+                        <span className="font-mono text-4xl font-bold tracking-tight">
+                            {formatINR(OVERVIEW_DATA.totalBalance).replace("₹", "")}
+                        </span>
+                        <span className="font-mono text-lg font-semibold mb-0.5 opacity-70">
+                            ₹
+                        </span>
+                    </div>
                 </div>
+
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <Button onClick={exportFile} variant="outline" size="icon-lg" className="shrink-0 gap-2 text-black cursor-pointer hover:text-black">
+                            <Download className="h-4 w-4" />
+                        </Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="bottom" className="bg-background dark:bg-white dark:text-black text-foreground">
+                        <span>Export CSV</span>
+                    </TooltipContent>
+                </Tooltip>
             </CardHeader>
 
             <CardContent className="space-y-5">

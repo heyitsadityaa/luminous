@@ -4,6 +4,7 @@ import { Urbanist } from "next/font/google";
 
 import type { Metadata } from "next";
 import DashboardNavbar from "@/components/dashboard/dashboard-navbar";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const fontSerif = Urbanist({
     subsets: ["latin"],
@@ -23,7 +24,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className={`${fontSerif.variable} antialiased`}>
             <DashboardProvider>
                 <DashboardNavbar />
-                {children}
+                <TooltipProvider>
+                    {children}
+                </TooltipProvider>
             </DashboardProvider>
         </div>
     );
