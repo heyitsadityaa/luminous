@@ -25,25 +25,19 @@ import {
 import { TREND_DESCRIPTION, TREND_NAME } from "@/constant/trend-chart";
 import { cn } from "@/lib/utils";
 
-// Realistic data — spikes explained:
-// Jun: Goa trip 🏖️
-// Aug: Laptop purchased
-// Oct: Dussehra/Diwali shopping + travel home
-// Dec: Christmas vacation + gifts
-// Feb: Relatively quiet month, stayed in
 const chartData = [
-  { month: "2024-05", expense: 36400 },
-  { month: "2024-06", expense: 61800 }, // Goa vacation
-  { month: "2024-07", expense: 38200 },
-  { month: "2024-08", expense: 67400 }, // Laptop + accessories
-  { month: "2024-09", expense: 35100 },
-  { month: "2024-10", expense: 58900 }, // Diwali + travel home
-  { month: "2024-11", expense: 41200 },
-  { month: "2024-12", expense: 72600 }, // Christmas vacation + gifts
-  { month: "2025-01", expense: 37600 },
-  { month: "2025-02", expense: 29800 }, // Quiet month
+  { month: "2024-05", expense: 10400 },
+  { month: "2024-06", expense: 6800 },
+  { month: "2024-07", expense: 8200 },
+  { month: "2024-08", expense: 23400 },
+  { month: "2024-09", expense: 31100 },
+  { month: "2024-10", expense: 58900 },
+  { month: "2024-11", expense: 13200 },
+  { month: "2024-12", expense: 72600 },
+  { month: "2025-01", expense: 24600 },
+  { month: "2025-02", expense: 12800 },
   { month: "2025-03", expense: 44100 },
-  { month: "2025-04", expense: 34350 },
+  { month: "2025-04", expense: 12350 },
 ];
 
 const chartConfig = {
@@ -82,10 +76,10 @@ export function TrendChart({ className }: { className?: string }) {
 
   // spike annotation labels
   const spikeReasons: Record<string, string> = {
-    "2024-06": "Goa Trip",
-    "2024-08": "Laptop",
+    "2024-08": "Goa Trip",
+    "2025-03": "Holi",
     "2024-10": "Diwali",
-    "2024-12": "Vacation",
+    "2024-12": "New Year",
   };
 
   return (

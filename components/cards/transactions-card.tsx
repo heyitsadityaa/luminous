@@ -22,7 +22,7 @@ const TransactionsCard = ({ className }: { className?: string }) => {
   const displayTransactions =
     searchQuery && searchQuery.trim()
       ? searchTransactions()
-      : transactions.slice(0, 6);
+      : transactions.slice(0, 7);
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
@@ -72,7 +72,7 @@ const TransactionsCard = ({ className }: { className?: string }) => {
       </CardHeader>
 
       <CardContent>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {displayTransactions.map((transaction) => (
             <div
               key={transaction.id}

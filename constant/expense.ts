@@ -2,7 +2,7 @@ import type { ChartConfig } from "@/components/ui/chart";
 
 export const EXPENSE_NAME = "Expense Distribution";
 
-export const EXPENSE_DESCRIPTION = "Where your money went this month";
+export const EXPENSE_DESCRIPTION = "Where you used your money this month";
 
 export const EXPENSE_DATA = [
   { category: "food", amount: 12400, fill: "var(--color-food)" },

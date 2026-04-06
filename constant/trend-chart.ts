@@ -2,7 +2,7 @@ import type { ChartConfig } from "@/components/ui/chart";
 
 export const TREND_NAME = "Leisure Spending";
 
-export const TREND_DESCRIPTION = "Your fun money — last 12 months";
+export const TREND_DESCRIPTION = "Your fun money in last 12 months";
 
 export const TREND_DATA = [
   { month: "2024-05", expense: 8400 },
