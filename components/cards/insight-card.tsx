@@ -1,115 +1,119 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { Card, CardContent, CardHeader } from "../ui/card"
-import { cn } from "@/lib/utils"
-import { AnimatePresence, motion } from "motion/react"
+import React, { useState } from "react";
+import { Card, CardContent, CardHeader } from "../ui/card";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "motion/react";
 
-type InsightVariant = "rings" | "dots" | "diagonal" | "brackets"
+type InsightVariant = "rings" | "dots" | "diagonal" | "brackets";
 
 const patterns: Record<InsightVariant, React.ReactNode> = {
-    rings: (
-        <>
-            <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full border border-border opacity-40" />
-            <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full border border-border opacity-30" />
-            <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary" />
-        </>
-    ),
-    dots: (
-        <>
-            <div
-                className="absolute inset-0 opacity-[0.07]"
-                style={{
-                    backgroundImage: "radial-gradient(circle, currentColor 1px, transparent 1px)",
-                    backgroundSize: "14px 14px",
-                }}
-            />
-            <div className="absolute top-3 right-3 w-8 h-8 rounded-lg border border-primary opacity-60" />
-            <div className="absolute top-5 right-5 w-4 h-4 rounded-md bg-primary opacity-40" />
-        </>
-    ),
-    diagonal: (
-        <>
-            <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-primary opacity-10" />
-            <div
-                className="absolute top-0 right-0 w-16 h-16 opacity-[0.06]"
-                style={{
-                    backgroundImage:
-                        "repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
-                    backgroundSize: "8px 8px",
-                }}
-            />
-            <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-primary" />
-            <div className="absolute bottom-7 right-7 w-1.5 h-1.5 rounded-full bg-primary opacity-50" />
-        </>
-    ),
-    brackets: (
-        <>
-            <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-primary opacity-60 rounded-tr-sm" />
-            <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-primary opacity-60 rounded-bl-sm" />
-            <div className="absolute bottom-6 right-6 w-16 h-16 rounded-full border border-border opacity-20" />
-        </>
-    ),
-}
+  rings: (
+    <>
+      <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full border border-border opacity-40" />
+      <div className="absolute -bottom-4 -right-4 w-20 h-20 rounded-full border border-border opacity-30" />
+      <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-primary" />
+    </>
+  ),
+  dots: (
+    <>
+      <div
+        className="absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, currentColor 1px, transparent 1px)",
+          backgroundSize: "14px 14px",
+        }}
+      />
+      <div className="absolute top-3 right-3 w-8 h-8 rounded-lg border border-primary opacity-60" />
+      <div className="absolute top-5 right-5 w-4 h-4 rounded-md bg-primary opacity-40" />
+    </>
+  ),
+  diagonal: (
+    <>
+      <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-primary opacity-10" />
+      <div
+        className="absolute top-0 right-0 w-16 h-16 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
+          backgroundSize: "8px 8px",
+        }}
+      />
+      <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-primary" />
+      <div className="absolute bottom-7 right-7 w-1.5 h-1.5 rounded-full bg-primary opacity-50" />
+    </>
+  ),
+  brackets: (
+    <>
+      <div className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-primary opacity-60 rounded-tr-sm" />
+      <div className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-primary opacity-60 rounded-bl-sm" />
+      <div className="absolute bottom-6 right-6 w-16 h-16 rounded-full border border-border opacity-20" />
+    </>
+  ),
+};
 
 const InsightCard = ({
-    cardHeader,
-    cardDescription,
-    variant = "rings",
-    className,
+  cardHeader,
+  cardDescription,
+  variant = "rings",
+  className,
 }: {
-    cardHeader: string
-    cardDescription: string
-    variant?: InsightVariant
-    className?: string
+  cardHeader: string;
+  cardDescription: string;
+  variant?: InsightVariant;
+  className?: string;
 }) => {
-    const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
 
-    return (
-        <Card
-            className={cn("aspect-square w-full h-full relative overflow-hidden", className)}
-            onPointerEnter={() => setIsHovered(true)}
-            onPointerLeave={() => setIsHovered(false)}
-        >
-            {patterns[variant]}
+  return (
+    <Card
+      className={cn(
+        "aspect-square w-full h-full relative overflow-hidden",
+        className,
+      )}
+      onPointerEnter={() => setIsHovered(true)}
+      onPointerLeave={() => setIsHovered(false)}
+    >
+      {patterns[variant]}
 
-            <CardHeader className="pb-0">
-                <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
-                    Insight
-                </p>
-            </CardHeader>
+      <CardHeader className="pb-0">
+        <p className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
+          Insight
+        </p>
+      </CardHeader>
 
-            <CardContent className="flex flex-col justify-end h-[calc(100%-60px)]">
-                <div className="relative min-h-14">
-                    <AnimatePresence mode="wait" initial={false}>
-                        {!isHovered ? (
-                            <motion.p
-                                key="header"
-                                initial={{ opacity: 0, y: 8 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.25, ease: "easeOut" }}
-                                exit={{ opacity: 0, y: -8 }}
-                                className="text-2xl md:text-lg lg:text-2xl font-bold leading-tight tracking-tight"
-                            >
-                                {cardHeader}
-                            </motion.p>
-                        ) : (
-                            <motion.p
-                                key="description"
-                                initial={{ opacity: 0, y: 8 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -8 }}
-                                transition={{ duration: 0.25, ease: "easeOut" }}
-                                className="text-sm md:text-xs lg:text-sm text-muted-foreground leading-relaxed"
-                            >
-                                {cardDescription}
-                            </motion.p>
-                        )}
-                    </AnimatePresence>
-                </div>
-            </CardContent>
-        </Card>
-    )
-}
+      <CardContent className="flex flex-col justify-end h-[calc(100%-60px)]">
+        <div className="relative min-h-14">
+          <AnimatePresence mode="wait" initial={false}>
+            {!isHovered ? (
+              <motion.p
+                key="header"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                exit={{ opacity: 0, y: -8 }}
+                className="text-2xl md:text-lg lg:text-2xl font-bold leading-tight tracking-tight"
+              >
+                {cardHeader}
+              </motion.p>
+            ) : (
+              <motion.p
+                key="description"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="text-sm md:text-xs lg:text-sm text-muted-foreground leading-relaxed"
+              >
+                {cardDescription}
+              </motion.p>
+            )}
+          </AnimatePresence>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
-export default InsightCard
+export default InsightCard;

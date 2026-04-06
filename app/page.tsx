@@ -60,7 +60,8 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Sign in as Admin</h3>
                 <p className="text-sm text-muted-foreground">
-                  Full-access to Transaction details, Portfolio Performance and Market Insights.
+                  Full-access to Transaction details, Portfolio Performance and
+                  Market Insights.
                 </p>
               </div>
               <div className="flex items-center gap-2 mt-6 text-foreground font-medium text-sm group-hover:gap-3 transition-all">
@@ -81,9 +82,12 @@ export default function Home() {
                 <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary">
                   <Eye className="w-6 h-6 text-black" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Sign in as Viewer</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  Sign in as Viewer
+                </h3>
                 <p className="text-sm text-muted-foreground">
-                  Read-only access to Transaction details, Portfolio Performance and Market Insights.
+                  Read-only access to Transaction details, Portfolio Performance
+                  and Market Insights.
                 </p>
               </div>
               <div className="flex items-center gap-2 mt-6 text-foreground font-medium text-sm group-hover:gap-3 transition-all">
@@ -97,4 +101,3 @@ export default function Home() {
     </div>
   );
 }
-
