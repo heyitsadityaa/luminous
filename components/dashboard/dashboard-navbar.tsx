@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { ModeToggle } from "../mode-toggle";
-import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,19 +12,29 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { CircleUser, LogOut, Search } from "lucide-react";
+import { CircleUser, LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useRole } from "@/store/useRole";
 import { useIsMobile } from "@/hooks/use-mobile";
 import useIsAdmin from "@/hooks/useIsAdmin";
 import { Button } from "../ui/button";
+import { useEffect, useState } from "react";
 
 const DashboardNavbar = () => {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const role = useRole((state) => state.role);
   const isMobile = useIsMobile();
   const isAdmin = useIsAdmin();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const handleSignOut = async () => {
     localStorage.removeItem("ledger-role");
@@ -101,11 +110,10 @@ const DashboardNavbar = () => {
               >
                 <CircleUser className="w-5 h-5 cursor-pointer hover:text-primary transition" />
                 <span
-                  className={`absolute -top-1.5 -right-1.5 text-[9px] font-bold px-1 py-0 rounded-full leading-4 ${
-                    isAdmin
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground border border-border"
-                  }`}
+                  className={`absolute -top-1.5 -right-1.5 text-[9px] font-bold px-1 py-0 rounded-full leading-4 ${isAdmin
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground border border-border"
+                    }`}
                 >
                   {isAdmin ? "Admin" : "Viewer"}
                 </span>
