@@ -1,7 +1,6 @@
 import { Search } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { TRANSACTIONS } from "@/constant/transaction";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useTransactions } from "@/store/useTransactions";
@@ -22,7 +21,7 @@ const TransactionsCard = ({ className }: { className?: string }) => {
   const displayTransactions =
     searchQuery && searchQuery.trim()
       ? searchTransactions()
-      : transactions.slice(0, 7);
+      : transactions;
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
@@ -71,8 +70,8 @@ const TransactionsCard = ({ className }: { className?: string }) => {
         </div>
       </CardHeader>
 
-      <CardContent>
-        <div className="space-y-3">
+      <CardContent className="flex-1 min-h-0 px-0">
+        <div className="h-full overflow-y-auto px-4 pr-2 [scrollbar-width:thin] transactions-scroll">
           {displayTransactions.map((transaction) => (
             <div
               key={transaction.id}

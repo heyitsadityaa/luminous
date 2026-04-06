@@ -181,3 +181,35 @@
     @apply bg-background text-foreground;
   }
 }
+
+.transactions-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted-foreground) transparent;
+}
+
+.transactions-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.transactions-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.transactions-scroll::-webkit-scrollbar-thumb {
+  background-color: color-mix(
+    in oklab,
+    var(--muted-foreground) 45%,
+    transparent
+  );
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.dark .transactions-scroll::-webkit-scrollbar-thumb {
+  background-color: color-mix(
+    in oklab,
+    var(--muted-foreground) 70%,
+    transparent
+  );
+}
