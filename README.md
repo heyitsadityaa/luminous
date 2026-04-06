@@ -1,6 +1,8 @@
 # Luminous
 
-![Luminous project image](public/logo.svg)
+![Luminous project image](assets/luminous.png)
+
+> _Check out assets folder for more image of this project._
 
 ## Project Overview
 
@@ -10,11 +12,9 @@ The app is designed as a frontend demonstration of a personal finance experience
 
 ## Demo Video
 
-Add your demo video link here.
+[Watch the Luminous Demo](https://github.com/user-attachments/assets/0b96e4ae-a021-425a-a638-f46e5b3a2710)
 
-Example:
-
-- https://www.youtube.com/watch?v=your-demo-video
+> _Click to watch a walkthrough of Luminous._
 
 ## Tech Stack
 
