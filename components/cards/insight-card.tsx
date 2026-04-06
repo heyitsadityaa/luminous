@@ -89,7 +89,7 @@ const InsightCard = ({
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.25, ease: "easeOut" }}
                                 exit={{ opacity: 0, y: -8 }}
-                                className="text-2xl font-bold leading-tight tracking-tight"
+                                className="text-2xl md:text-lg lg:text-2xl font-bold leading-tight tracking-tight"
                             >
                                 {cardHeader}
                             </motion.p>
@@ -100,7 +100,7 @@ const InsightCard = ({
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -8 }}
                                 transition={{ duration: 0.25, ease: "easeOut" }}
-                                className="text-md text-muted-foreground leading-relaxed"
+                                className="text-sm md:text-xs lg:text-sm text-muted-foreground leading-relaxed"
                             >
                                 {cardDescription}
                             </motion.p>
