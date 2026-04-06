@@ -9,19 +9,20 @@ import { useTransactions } from "@/store/useTransactions";
 const TransactionsCard = ({ className }: { className?: string }) => {
   const [searchQuery, setSearchQuery] = useState<string | null>("");
 
-  const { transactions } = useTransactions()
+  const { transactions } = useTransactions();
 
   const searchTransactions = () => {
-    const trimmedSearchQuery = searchQuery?.trim()
+    const trimmedSearchQuery = searchQuery?.trim();
 
     return transactions.filter((val) =>
-      val.name.toLowerCase().includes(trimmedSearchQuery?.toLowerCase() || "")
-    )
-  }
+      val.name.toLowerCase().includes(trimmedSearchQuery?.toLowerCase() || ""),
+    );
+  };
 
-  const displayTransactions = searchQuery && searchQuery.trim()
-    ? searchTransactions()
-    : transactions.slice(0, 6);
+  const displayTransactions =
+    searchQuery && searchQuery.trim()
+      ? searchTransactions()
+      : transactions.slice(0, 6);
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
