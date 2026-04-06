@@ -1,5 +1,4 @@
-import React from "react";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Card, CardHeader } from "../ui/card";
 import { cn } from "@/lib/utils";
 
 const GreetingsCard = ({ className }: { className?: string }) => {

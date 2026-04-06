@@ -1,4 +1,4 @@
-import { ChartConfig } from "@/components/ui/chart";
+import type { ChartConfig } from "@/components/ui/chart";
 
 export const EXPENSE_NAME = "Expense Distribution";
 
