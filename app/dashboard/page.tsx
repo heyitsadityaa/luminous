@@ -108,9 +108,7 @@ const Dashboard = () => {
             className="w-full h-full"
             variant="brackets"
             cardHeader="Mutual Funds and Stocks lead your returns"
-            cardDescription="Mutual Funds, Stocks, and PPF are generating returns above allocation, while Crypto and Real Estate is underperforming and dragging the portfolio average.
-
-"
+            cardDescription="Mutual Funds, Stocks, and PPF are outperforming their allocations and driving returns, while Crypto and Real Estate continue to lag, pulling down the overall portfolio average and limiting broader performance momentum."
           />
         </motion.div>
 
@@ -124,7 +122,7 @@ const Dashboard = () => {
             className="w-full h-full"
             variant="dots"
             cardHeader="Disciplined investing is compounding ahead of schedule"
-            cardDescription="Regular contributions are building momentum faster than expected, creating a stronger long-term base without disrupting day-to-day spending."
+            cardDescription="Regular contributions are accelerating momentum beyond expectations, strengthening your long-term financial base while preserving daily spending flexibility."
           />
         </motion.div>
 

@@ -60,7 +60,9 @@ const TransactionsCard = ({ className }: { className?: string }) => {
     });
 
   return (
-    <Card className={cn("w-full h-full", className)}>
+    <Card
+      className={cn("w-full h-full max-h-[420px] md:max-h-none", className)}
+    >
       <CardHeader>
         <CardTitle className="font-semibold text-lg mb-2">
           Recent Transactions
@@ -80,7 +82,9 @@ const TransactionsCard = ({ className }: { className?: string }) => {
 
           <Select
             value={categoryFilter}
-            onValueChange={(value) => setCategoryFilter(value as CategoryFilter)}
+            onValueChange={(value) =>
+              setCategoryFilter(value as CategoryFilter)
+            }
           >
             <SelectTrigger className="h-9 w-9 md:w-9 lg:w-auto rounded-lg px-0 lg:px-2.5 gap-0 lg:gap-1.5 justify-center lg:justify-between [&>svg:last-child]:hidden lg:[&>svg:last-child]:block">
               <Filter className="h-4 w-4 shrink-0" />
